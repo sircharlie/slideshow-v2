@@ -1,0 +1,26 @@
+<div class="container">
+
+    <input *ngFor="let imageUrl of imageUrls; index as i" type="radio" name="activator" [id]="i" class="radio-btn"
+           [checked]="i == 0 ? 'checked' : false">
+    <!-- end of radio inputs -->
+
+    <div class="controls" *ngFor="let imageUrl of imageUrls; index as i">
+        <label [for]="i+1 > imageUrls.length-1 ? 0 : i+1" class="carousel__control carousel__control--forward"
+               (click)="changeSlide(i+1)"></label>
+        <label [for]="i-1 < 0 ? imageUrls.length-1 : i-1" class="carousel__control carousel__control--backward"
+               (click)="changeSlide(i-1)"></label>
+    </div>
+    <!-- end of backwards/forwards button -->
+
+    <div class="slides">
+        <div class="carousel__slide" *ngFor="let imageUrl of imageUrls; index as i">
+            <img [src]="imageUrl" [alt]="'Image' + i">
+        </div>
+    </div>
+    <!-- end of slider  -->
+
+    <div class="indicators">
+        <label [for]="i" class="carousel__indicator" *ngFor="let imageUrl of imageUrls; index as i"></label>
+    </div>
+    <!-- end of dots   -->
+</div>
